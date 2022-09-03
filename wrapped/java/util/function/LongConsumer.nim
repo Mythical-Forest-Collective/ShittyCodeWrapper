@@ -1,4 +1,4 @@
-# Imports
+{.experimental: "codeReordering".}
 
 # Class/Object wrapping
 type LongConsumer = object
@@ -7,7 +7,9 @@ type LongConsumer = object
 template classLocation*(obj:typedesc[LongConsumer]):string = "java.util.function.LongConsumer"
 
 # Methods
-template accept*(obj:LongConsumer):string = obj.variableName & ".accept"
-template andThen*(obj:LongConsumer):string = obj.variableName & ".andThen"
+template `accept`*(obj:LongConsumer):string = obj.variableName & ".accept"
+template `andThen`*(obj:LongConsumer):string = obj.variableName & ".andThen"
 
 # Fields
+
+# Imports

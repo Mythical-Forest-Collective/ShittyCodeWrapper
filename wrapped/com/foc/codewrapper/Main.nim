@@ -1,8 +1,4 @@
-# Imports
-import wrapped/java/util/ArrayList
-import wrapped/java/lang/Class
-import wrapped/java/lang/String
-import wrapped/java/util/List
+{.experimental: "codeReordering".}
 
 # Class/Object wrapping
 type Main = object
@@ -11,18 +7,26 @@ type Main = object
 template classLocation*(obj:typedesc[Main]):string = "com.foc.codewrapper.Main"
 
 # Methods
-template main*(obj:typedesc[Main]):string = "main"
-template classResolver*(obj:typedesc[Main]):string = "classResolver"
-template writeFile*(obj:typedesc[Main]):string = "writeFile"
-template wait*(obj:Main):string = obj.variableName & ".wait"
-template wait*(obj:Main):string = obj.variableName & ".wait"
-template wait*(obj:Main):string = obj.variableName & ".wait"
-template equals*(obj:Main):string = obj.variableName & ".equals"
-template toString*(obj:Main):string = obj.variableName & ".toString"
-template hashCode*(obj:Main):string = obj.variableName & ".hashCode"
-template getClass*(obj:Main):string = obj.variableName & ".getClass"
-template notify*(obj:Main):string = obj.variableName & ".notify"
-template notifyAll*(obj:Main):string = obj.variableName & ".notifyAll"
+template `main`*(obj:typedesc[Main]):string = "main"
+template `classResolver`*(obj:typedesc[Main]):string = "classResolver"
+template `writeFile`*(obj:typedesc[Main]):string = "writeFile"
+template `wait`*(obj:Main):string = obj.variableName & ".wait"
+template `wait`*(obj:Main):string = obj.variableName & ".wait"
+template `wait`*(obj:Main):string = obj.variableName & ".wait"
+template `equals`*(obj:Main):string = obj.variableName & ".equals"
+template `toString`*(obj:Main):string = obj.variableName & ".toString"
+template `hashCode`*(obj:Main):string = obj.variableName & ".hashCode"
+template `getClass`*(obj:Main):string = obj.variableName & ".getClass"
+template `notify`*(obj:Main):string = obj.variableName & ".notify"
+template `notifyAll`*(obj:Main):string = obj.variableName & ".notifyAll"
 
 # Fields
-template analysedClasses*(obj:typedesc[Main]):ArrayList = "Main.analysedClasses"
+template `packageExports`*(obj:typedesc[Main]):HashMap = "Main.packageExports"
+template `analysedClasses`*(obj:typedesc[Main]):ArrayList = "Main.analysedClasses"
+
+# Imports
+import wrapped/java/util/List
+import wrapped/java/lang/String
+import wrapped/java/lang/Class
+import wrapped/java/util/HashMap
+import wrapped/java/util/ArrayList

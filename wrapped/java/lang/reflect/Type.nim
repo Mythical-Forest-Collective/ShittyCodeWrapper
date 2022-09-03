@@ -1,5 +1,4 @@
-# Imports
-import wrapped/java/lang/String
+{.experimental: "codeReordering".}
 
 # Class/Object wrapping
 type Type = object
@@ -8,6 +7,9 @@ type Type = object
 template classLocation*(obj:typedesc[Type]):string = "java.lang.reflect.Type"
 
 # Methods
-template getTypeName*(obj:Type):string = obj.variableName & ".getTypeName"
+template `getTypeName`*(obj:Type):string = obj.variableName & ".getTypeName"
 
 # Fields
+
+# Imports
+import wrapped/java/lang/String

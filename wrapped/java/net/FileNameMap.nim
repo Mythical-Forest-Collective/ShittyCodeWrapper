@@ -1,5 +1,4 @@
-# Imports
-import wrapped/java/lang/String
+{.experimental: "codeReordering".}
 
 # Class/Object wrapping
 type FileNameMap = object
@@ -8,6 +7,9 @@ type FileNameMap = object
 template classLocation*(obj:typedesc[FileNameMap]):string = "java.net.FileNameMap"
 
 # Methods
-template getContentTypeFor*(obj:FileNameMap):string = obj.variableName & ".getContentTypeFor"
+template `getContentTypeFor`*(obj:FileNameMap):string = obj.variableName & ".getContentTypeFor"
 
 # Fields
+
+# Imports
+import wrapped/java/lang/String

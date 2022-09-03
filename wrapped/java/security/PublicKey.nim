@@ -1,5 +1,4 @@
-# Imports
-import wrapped/java/lang/String
+{.experimental: "codeReordering".}
 
 # Class/Object wrapping
 type PublicKey = object
@@ -8,10 +7,13 @@ type PublicKey = object
 template classLocation*(obj:typedesc[PublicKey]):string = "java.security.PublicKey"
 
 # Methods
-template getEncoded*(obj:PublicKey):string = obj.variableName & ".getEncoded"
-template getFormat*(obj:PublicKey):string = obj.variableName & ".getFormat"
-template getAlgorithm*(obj:PublicKey):string = obj.variableName & ".getAlgorithm"
+template `getEncoded`*(obj:PublicKey):string = obj.variableName & ".getEncoded"
+template `getFormat`*(obj:PublicKey):string = obj.variableName & ".getFormat"
+template `getAlgorithm`*(obj:PublicKey):string = obj.variableName & ".getAlgorithm"
 
 # Fields
-template serialVersionUID*(obj:typedesc[PublicKey]):long = "PublicKey.serialVersionUID"
-template serialVersionUID*(obj:typedesc[PublicKey]):long = "PublicKey.serialVersionUID"
+template `serialVersionUID`*(obj:typedesc[PublicKey]):long = "PublicKey.serialVersionUID"
+template `serialVersionUID`*(obj:typedesc[PublicKey]):long = "PublicKey.serialVersionUID"
+
+# Imports
+import wrapped/java/lang/String

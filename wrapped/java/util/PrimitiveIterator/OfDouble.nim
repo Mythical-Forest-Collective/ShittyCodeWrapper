@@ -1,6 +1,4 @@
-# Imports
-import wrapped/java/lang/Double
-import wrapped/java/lang/Object
+{.experimental: "codeReordering".}
 
 # Class/Object wrapping
 type OfDouble = object
@@ -9,13 +7,17 @@ type OfDouble = object
 template classLocation*(obj:typedesc[OfDouble]):string = "java.util.PrimitiveIterator$OfDouble"
 
 # Methods
-template forEachRemaining*(obj:OfDouble):string = obj.variableName & ".forEachRemaining"
-template forEachRemaining*(obj:OfDouble):string = obj.variableName & ".forEachRemaining"
-template forEachRemaining*(obj:OfDouble):string = obj.variableName & ".forEachRemaining"
-template next*(obj:OfDouble):string = obj.variableName & ".next"
-template next*(obj:OfDouble):string = obj.variableName & ".next"
-template nextDouble*(obj:OfDouble):string = obj.variableName & ".nextDouble"
-template remove*(obj:OfDouble):string = obj.variableName & ".remove"
-template hasNext*(obj:OfDouble):string = obj.variableName & ".hasNext"
+template `forEachRemaining`*(obj:OfDouble):string = obj.variableName & ".forEachRemaining"
+template `forEachRemaining`*(obj:OfDouble):string = obj.variableName & ".forEachRemaining"
+template `forEachRemaining`*(obj:OfDouble):string = obj.variableName & ".forEachRemaining"
+template `next`*(obj:OfDouble):string = obj.variableName & ".next"
+template `next`*(obj:OfDouble):string = obj.variableName & ".next"
+template `nextDouble`*(obj:OfDouble):string = obj.variableName & ".nextDouble"
+template `remove`*(obj:OfDouble):string = obj.variableName & ".remove"
+template `hasNext`*(obj:OfDouble):string = obj.variableName & ".hasNext"
 
 # Fields
+
+# Imports
+import wrapped/java/lang/Object
+import wrapped/java/lang/Double

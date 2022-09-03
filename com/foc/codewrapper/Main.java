@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class Main {
+    public static HashMap<String, StringBuilder> packageExports = new HashMap<>();
     public static ArrayList<String> analysedClasses = new ArrayList<>();
 
     public static void main(String[] descs) {
@@ -89,7 +90,7 @@ public class Main {
             boolean isStatic = Modifier.isStatic(m.getModifiers());
 
             output.append("template ")
-                    .append(methodName)
+                    .append("`"+methodName+"`")
                     .append("*(obj:")
                     .append(isStatic ? "typedesc[" : "")
                     .append(simpleName)
@@ -115,7 +116,7 @@ public class Main {
             boolean isStatic = Modifier.isStatic(f.getModifiers());
 
             output.append("template ")
-                    .append(fieldName)
+                    .append("`"+fieldName+"`")
                     .append("*(obj:")
                     .append(isStatic ? "typedesc[" : "")
                     .append(simpleName)
@@ -131,7 +132,9 @@ public class Main {
                     .append('\n');
         }
 
-        output.insert(0, "\n# Class/Object wrapping\n");
+        output.insert(0, "# Class/Object wrapping\n");
+
+        output.append("\n# Imports\n");
 
         for (Class myCls: classesToAnalyse) {
             var desc = myCls.descriptorString().replace('$', '/');
@@ -147,13 +150,19 @@ public class Main {
             }
 
             if (!cls.equals(myCls)) {
-                output.insert(0, "import wrapped/" + desc + "\n");
+                String clsDesc = cls.descriptorString().replace("$", "//").substring(1); // Use `//` to mark `$`
+                clsDesc = clsDesc.substring(0, clsDesc.length()-1);
+
+
+
+                output.append("import wrapped/" + desc + "\n");
             }
         }
 
-        output.insert(0, "# Imports\n");
-
         String resultFile = "./wrapped/" + className.replace('.', '/').replace("$", "/") + ".nim";
+
+        output.insert(0, "{.experimental: \"codeReordering\".}\n\n");
+
         writeFile(resultFile, output.toString());
 
         analysedClasses.add(descriptor);

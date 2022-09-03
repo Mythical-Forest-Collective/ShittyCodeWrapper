@@ -1,4 +1,4 @@
-# Imports
+{.experimental: "codeReordering".}
 
 # Class/Object wrapping
 type DoubleConsumer = object
@@ -7,7 +7,9 @@ type DoubleConsumer = object
 template classLocation*(obj:typedesc[DoubleConsumer]):string = "java.util.function.DoubleConsumer"
 
 # Methods
-template accept*(obj:DoubleConsumer):string = obj.variableName & ".accept"
-template andThen*(obj:DoubleConsumer):string = obj.variableName & ".andThen"
+template `accept`*(obj:DoubleConsumer):string = obj.variableName & ".accept"
+template `andThen`*(obj:DoubleConsumer):string = obj.variableName & ".andThen"
 
 # Fields
+
+# Imports
